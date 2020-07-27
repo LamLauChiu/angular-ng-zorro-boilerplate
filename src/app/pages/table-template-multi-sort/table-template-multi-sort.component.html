@@ -1,0 +1,65 @@
+<div>
+    <p>table-template-multi-sort works!</p>
+    <div class="table-operations">
+        <button nz-button (click)="sortByAge()">Sort age</button>
+        <button nz-button (click)="resetFilters()">Clear filters</button>
+        <button nz-button (click)="resetSerach()">Reset Serach</button>
+        <button nz-button (click)="resetSortAndFilters()">Clear filters and sorters</button>
+        <!-- <nz-filter-trigger  [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                <i nz-icon nzType="search"></i>
+              </nz-filter-trigger> -->
+              
+    </div>
+    <nz-table #filterTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+            
+    <thead>
+        <tr>
+            <!-- <th 
+                *ngFor="let column of listOfColumns; trackBy: trackByName"
+                [(nzSortOrder)]="column.sortOrder"
+                [nzSortFn]="column.sortFn"
+                [nzFilters]="column.listOfFilter"
+                [nzFilterFn]="column.filterFn"
+            >   
+                {{ column.name }}
+            </th> -->
+            <th nzCustomFilter>
+                Name
+            <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                <i nz-icon nzType="search"></i>
+            </nz-filter-trigger>
+            </th>
+            <th [(nzSortOrder)]="listOfColumns[1].sortOrder"
+                [nzSortFn]="listOfColumns[1].sortFn"
+                [nzFilters]="listOfColumns[1].listOfFilter"
+                [nzFilterFn]="listOfColumns[1].filterFn">
+                {{ listOfColumns[1].name }}
+            </th>
+            <th [(nzSortOrder)]="listOfColumns[2].sortOrder"
+                [nzSortFn]="listOfColumns[2].sortFn"
+                [nzFilters]="listOfColumns[2].listOfFilter"
+                [nzFilterFn]="listOfColumns[2].filterFn">
+                {{ listOfColumns[2].name }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of filterTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        </tr>
+    </tbody>
+    </nz-table>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <div class="ant-table-filter-dropdown">
+            <div class="search-box">
+            <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+            <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">
+                Search
+            </button>
+            <button nz-button nzSize="small" (click)="resetSerach()">Reset</button>
+            </div>
+        </div>
+    </nz-dropdown-menu>
+</div>
