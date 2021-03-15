@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
@@ -21,11 +21,16 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { TableTemplateModule } from "./pages/table-template/table-template.module";
 import { TableTemplateMultiSortModule } from "./pages/table-template-multi-sort/table-template-multi-sort.module";
 
+import { fakeBackendProvider } from './helpers';
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
+//import { AlertComponent } from './_components';
+
+
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,14 @@ registerLocaleData(en);
     //TableTemplateModule,
     //TableTemplateMultiSortModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

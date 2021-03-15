@@ -12,6 +12,19 @@
         </a>
       </div>
       <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+          <li nz-submenu nzOpen nzTitle="Auth" nzIcon="form">
+              <ul>
+                <!-- <li nz-menu-item nzMatchRouter>
+                  <a routerLink="/temp">Temp </a>
+                </li> -->
+                <li nz-menu-item nzMatchRouter>
+                    <a routerLink="auth/user-info">User Information </a>
+                  </li>
+                  <li nz-menu-item nzMatchRouter>
+                      <a routerLink="auth/user-lists">User Lists</a>
+                    </li>
+              </ul>
+            </li>
         <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
           <ul>
             <li nz-menu-item nzMatchRouter>
