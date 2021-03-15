@@ -1,12 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IconsProviderModule } from './icons-provider.module';
+import { CmsLayoutRoutingModule } from './cms-layout-routing.module';
+import { AppComponent } from '../app.component';
+import { IconsProviderModule } from '../icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,24 +18,26 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
-import { TableTemplateModule } from "./pages/table-template/table-template.module";
-import { TableTemplateMultiSortModule } from "./pages/table-template-multi-sort/table-template-multi-sort.module";
+import { TableTemplateModule } from "../pages/table-template/table-template.module";
+import { TableTemplateMultiSortModule } from "../pages/table-template-multi-sort/table-template-multi-sort.module";
+import { CmsLayoutComponent } from './cms-layout.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    //AppComponent,
+    CmsLayoutComponent
   ],
   imports: [
-    BrowserModule,
+    //BrowserModule,
     
-    AppRoutingModule,
+    CmsLayoutRoutingModule,
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    //BrowserAnimationsModule,
     //NgZorroAntdModule,
     NzTableModule,
     FormsModule,
@@ -45,10 +47,10 @@ registerLocaleData(en);
     ScrollingModule,
     DragDropModule,
     
-    //TableTemplateModule,
-    //TableTemplateMultiSortModule
+    TableTemplateModule,
+    TableTemplateMultiSortModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  bootstrap: [CmsLayoutComponent]
 })
-export class AppModule { }
+export class CmsLayoutModule { }

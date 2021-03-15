@@ -1,4 +1,4 @@
-<nz-layout class="app-layout">
+<!-- <nz-layout class="app-layout">
   <nz-sider class="menu-sidebar"
             nzCollapsible
             nzWidth="256px"
@@ -40,9 +40,10 @@
       </li>
       <li nz-submenu nzOpen nzTitle="Temp" nzIcon="form">
           <ul>
+            -->
             <!-- <li nz-menu-item nzMatchRouter>
               <a routerLink="/temp">Temp </a>
-            </li> -->
+            </li> --> <!--
             <li nz-menu-item nzMatchRouter>
                 <a routerLink="/temp/tempPageOne">Temp Page Two </a>
               </li>
@@ -70,4 +71,19 @@
       </div>
     </nz-content>
   </nz-layout>
-</nz-layout>
+</nz-layout> -->
+
+<nz-layout class="app-layout">
+    <nz-layout>
+      <!-- <nz-header>
+        <div class="app-header">
+        </div>
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content> -->
+      <router-outlet></router-outlet>
+    </nz-layout>
+  </nz-layout>

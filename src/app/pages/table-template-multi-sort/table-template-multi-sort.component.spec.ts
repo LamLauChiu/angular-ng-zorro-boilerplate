@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TableTemplateMultiSortComponent } from './table-template-multi-sort.component';
 
@@ -6,7 +6,7 @@ describe('TableTemplateMultiSortComponent', () => {
   let component: TableTemplateMultiSortComponent;
   let fixture: ComponentFixture<TableTemplateMultiSortComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TableTemplateMultiSortComponent ]
     })
